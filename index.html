@@ -1,267 +1,89 @@
 <!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frontend Case</title>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
 
-    <!--CSS-->
-    <link rel="stylesheet" href="style.css">
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/9.9.3/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/9.9.3/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/9.9.3/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/9.9.3/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/9.9.3/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/9.9.3/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/9.9.3/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/9.9.3/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/9.9.3/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/9.9.3/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
 
-    <!--JQUERY & BOOTSTRAP-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <style media="screen">
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        body, #message { margin-top: 0; background: white; box-shadow: none; }
+        body { border-top: 16px solid #ffa100; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="message">
+      <h2>Welcome</h2>
+      <h1>Firebase Hosting Setup Complete</h1>
+      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
+      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+    </div>
+    <p id="load">Firebase SDK Loading&hellip;</p>
 
-    <!-- Fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-</head>
-<body id="website_inclusive">
-        <header class="website_header d-flex justify-content-between align-items-center">
-            <div class="logo_inclusive h-100 d-flex align-items-center"><span class="d-lg-none d-block mr-1 mr-md-3 hidden_nav_button"><i class="fa-solid fa-bars text-light" style="font-size: 30px;"></i></span><img src="./Images/AcademiaUnited Logo-03 1.png" id="logo" alt=""></div>            
-            <nav class="nav_inclusive h-100 d-lg-flex d-none">
-                <ul>
-                    <li class="item">Home</li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" data-toggle="dropdown" href="#">Products<span><i class="fa-solid fa-angle-down ml-2"></i></span></a>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" href="#">Link 1</a>
-                          <a class="dropdown-item" href="#">Link 2</a>
-                          <a class="dropdown-item" href="#">Link 3</a>
-                        </div>
-                    </li >
-                    <li class="item">About</li>
-                    <li class="item">Our Services</li>
-                    <li class="item">Contact Us</li>
-                </ul>
-            </nav>
-            <nav class="hidden_mobile_nav d-none flex-column align-items-center d-none w-100 position-absolute" style="background-color: #ffc700 ; top: 85px; height: auto; z-index: 10;">
-              <ul class="list-unstyled text-center w-100 text-light" style="font-size:22px ;">
-                <li class="item py-3 border-bottom">Home</li>
-                <li class="nav-item dropdown border-bottom py-3">
-                    <a class="nav-link " data-toggle="dropdown" href="#">Products<span><i class="fa-solid fa-angle-down ml-2"></i></span></a>
-                    <div class="dropdown-menu w-100" style="left:-5px!important;">
-                      <a class="dropdown-item text-center" href="#">Link 1</a>
-                      <a class="dropdown-item text-center" href="#">Link 2</a>
-                      <a class="dropdown-item text-center" href="#">Link 3</a>
-                    </div>
-                </li >
-                <li class="item py-3 border-bottom">About</li>
-                <li class="item py-3 border-bottom">Our Services</li>
-                <li class="item pt-3 ">Contact Us</li>
-            </ul>
-            </nav>
-            
-            <div class="header_invest_button_inclusive h-100 d-flex justify-content-center align-items-center"><button>Invest</button></div>
-        </header>
-        <section>
-            <!--Carousel-->
-            <div class="carousel w-100">
-                <div id="carouse_slide1" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                      <div class="carousel-item active d-flex justify-content-between">
-                        <div class="carousel_item_1_text_area"> 
-                            <h1>We help your brand to be recognizable</h1>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere quidem, voluptas neque quam aspernatur qui! Eligendi expedita nam quibusdam, fugiat ab veniam molestias.</p>
-                        </div>
-                        <div class="carousel_item_1_img_area">
-                          <img class="d-block w-100" src="./Images/Group 1.png" alt="">
-                        </div>
-                      </div>
-                      <div class="carousel-item position-relative">
-                        <img class="d-block w-100" src="./Images/happy-young-asian-businessmen-businesswomen-meeting-brainstorming-ideas-about-new-paperwork-project 1.png" alt="Second slide">
-                        <div class="content_wrapper"> 
-                          <div class="carousel_item_2_text_area"> 
-                            <h1>We help your brand to be recognizable</h1>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere quidem, voluptas neque quam aspernatur qui! Eligendi expedita nam quibusdam, fugiat ab veniam molestias.</p>                            
-                          </div>
-                          <button>Contact Us</button>
-                        </div>
-                      </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouse_slide1" role="button" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="false"></span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouse_slide1" role="button" data-slide="next">
-                      <span class="carousel-control-next-icon d-flex justify-content-center" aria-hidden="false"></span>
-                      <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
-            <!--Banner-->
-            <div class="banner"> 
-                <div class="banner_content_box">
-                  <h2>Quality Product</h2>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo, voluptas asperiores excepturi id doloribus, laboriosam sequi ipsum tempore incidunt ad totam dolor rerum tenetur sunt neque ullam consequatur cum! Sunt?</p>
-                </div>
-                <div class="banner_content_box">
-                  <h2>Growth Strategy</h2>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo, voluptas asperiores excepturi id doloribus, laboriosam sequi ipsum tempore incidunt ad totam dolor rerum tenetur sunt neque ullam consequatur cum! Sunt?</p>
-                </div>
-                <div class="banner_content_box">
-                  <h2>Competitive price</h2>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo, voluptas asperiores excepturi id doloribus, laboriosam sequi ipsum tempore incidunt ad totam dolor rerum tenetur sunt neque ullam consequatur cum! Sunt?</p>
-                </div>
-                <div class="banner_content_box">
-                  <h2>Fat Response</h2>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo, voluptas asperiores excepturi id doloribus, laboriosam sequi ipsum tempore incidunt ad totam dolor rerum tenetur sunt neque ullam consequatur cum! Sunt?</p>
-                </div>
-            </div>            
-            <!--Jumbotron-->
-            <div class="jumbotron">
-                <h2>About Company</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla obcaecati ipsum, perferendis similique iste accusamus incidunt alias optio, sequi quisquam, expedita eos. Saepe nam, laboriosam, veritatis nobis cumque perspiciatis iure praesentium ipsa velit debitis nostrum blanditiis architecto modi.</p>
-                <button>Read More</button>
-              </div>
-            <!--Accordion Content-->
-              <div class="accordion_content_inclusive">
-                <img src="./Images/group-diverse-people-having-business-meeting 1.png" alt="">
-                
-                <div class="accordion_area" id="parent" >
-                  <div class="accordion" data-item="1" >
-                    <h1>Doing the right thing, at the right time</h1>
-                    <h5  class="accordion_collapse_header active" >
-                      Website & Mobile Desing <i class="fa-solid fa-angle-down mr-2" data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapse1"></i>
-                    </h5>
-                    <div class="collapse show" id="collapse1" data-parent="#parent">
-                      <div class="collapse_content">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam architecto repellat animi possimus quos enim iure aspernatur?
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="accordion" data-item="2" >
-                    <h5 class="accordion_collapse_header" >
-                      Branding <i class="fa-solid fa-angle-down mr-2" data-toggle="collapse" class="accordion_collapse_header" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse2"></i>
-                    </h5>
-                    <div class="collapse" id="collapse2" data-parent="#parent">
-                      <div class="collapse_content">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam architecto repellat animi possimus quos enim iure aspernatur?
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion" data-item="3" >
-                    <h5 class="accordion_collapse_header">
-                      Marketing <i class="fa-solid fa-angle-down mr-2" data-toggle="collapse" href="#collapse3" role="button" aria-expanded="false" aria-controls="collapse3"></i>
-                    </h5>
-                    <div class="collapse" id="collapse3" data-parent="#parent">
-                      <div class="collapse_content">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam architecto repellat animi possimus quos enim iure aspernatur?
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <!--Services-->
-              <div class="services_inclusive">
-                  <h1>Our Services</h1>
-                  <div class="services_wrapper"> 
-                      <div class="services_card_content"><img src="./Images/Group 2.png" alt=""><h4>Development</h4><p>Lorem ipsum dolor sit amet elit. Veniam, voluptatibus. Soluta officiis beatae similique autem nihil voluptate fugiat! Non asperiores excepturi voluptatum debitis molestias maiores temporibus sint!</p></div>
-                      <div class="services_card_content"><img src="./Images/Group 6943.png" alt=""><h4>Branding</h4><p>Lorem ipsum dolor sit amet elit. Veniam, voluptatibus. Soluta officiis beatae similique autem nihil voluptate fugiat! Non asperiores excepturi voluptatum debitis molestias maiores temporibus sint!</p></div>
-                      <div class="services_card_content"><img src="./Images/Group 6944.png" alt=""><h4>Design</h4><p>Lorem ipsum dolor sit amet elit. Veniam, voluptatibus. Soluta officiis beatae similique autem nihil voluptate fugiat! Non asperiores excepturi voluptatum debitis molestias maiores temporibus sint!</p></div>
-                      <div class="services_card_content"><img src="./Images/Group 6942.png" alt=""><h4>Social Media</h4><p>Lorem ipsum dolor sit amet elit. Veniam, voluptatibus. Soluta officiis beatae similique autem nihil voluptate fugiat! Non asperiores excepturi voluptatum debitis molestias maiores temporibus sint!</p></div>
-                      <div class="services_card_content"><img src="./Images/Group 6941.png" alt=""><h4>Marketing</h4><p>Lorem ipsum dolor sit amet elit. Veniam, voluptatibus. Soluta officiis beatae similique autem nihil voluptate fugiat! Non asperiores excepturi voluptatum debitis molestias maiores temporibus sint!</p></div>
-                      <div class="services_card_content"><img src="./Images/Group 7.png" alt=""><h4>Consultancy Services</h4><p>Lorem ipsum dolor sit amet elit. Veniam, voluptatibus. Soluta officiis beatae similique autem nihil voluptate fugiat! Non asperiores excepturi voluptatum debitis molestias maiores temporibus sint!</p></div>
-                    </div>
-              </div>
-            <!--Last Banner-->
-              <div id="carousel_slide2" class="carousel" data-interval="false">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <div class="page_1 page d-flex">
-                      <div class="page_text">
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis sapiente, voluptas non iste blanditiis illo, 
-                          voluptatibus perferendis dolore minus esse laudantium assumenda quia dolor nulla eum cumque quas. Quos, quo.
-                          Velit obcaecati eius, repellat illo officia reprehenderit ea. Ut necessitatibus, rem consequatur at culpa aliquid id tempora 
-                          autem veritatis maxime possimus sed nemo qui accusantium earum reiciendis, excepturi repellat eligendi?
-                        <h5 class="mt-3 author">Lorem Ipsum</h5>
-                      </div>
-                      <div class="page_1_paging">
-                          <div class="h-75 w-100 d-flex justify-content-center">
-                            <div class="page_number">01</div>
-                          </div>
-                          <div class="h-25 w-100 d-flex align-items-center justify-content-between paging_arrows">
-                            <div class="d-flex justify-content-end " id="banner_bottom_prev"><img src="./Images/bottom_slide_left.png" alt=""></div>
-                            <div class="d-flex justify-content-start" id="banner_bottom_next"><img src="./Images/bottom_slide_right.png" alt="" ></div>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <div class="page_2 page d-flex">
-                      <div class="page_text">
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis sapiente, voluptas non iste blanditiis illo, 
-                          voluptatibus perferendis dolore minus esse laudantium assumenda quia dolor nulla eum cumque quas. Quos, quo.
-                          Velit obcaecati eius, repellat illo officia reprehenderit ea. Ut necessitatibus, rem consequatur at culpa aliquid id tempora 
-                          autem veritatis maxime possimus sed nemo qui accusantium earum reiciendis, excepturi repellat eligendi?
-                        <h5 class="mt-3 author">Lorem Ipsum</h5>
-                      </div>
-                      <div class="page_2_paging">
-                          <div class="h-75 w-100 d-flex justify-content-center">
-                            <div class="page_number">02</div>
-                          </div>
-                          <div class="h-25 w-100 d-flex align-items-center justify-content-between paging_arrows">
-                            <div class="d-flex justify-content-end " id="banner_bottom_prev"><img src="./Images/bottom_slide_left.png" alt=""></div>
-                            <div class="d-flex justify-content-start " id="banner_bottom_next"><img src="./Images/bottom_slide_right.png" alt="" ></div>
-                          </div>
-                      </div>
-                    </div>
-                    
-                  </div>
-                </div>
-              </div>  
-        </section>
-        <footer>
-            <div class="footer_inclusive container-fluid"> 
-              <div class="row">
-                <div class="col-12 col-lg-4 d-flex flex-column justify-content-between align-items-lg-end align-items-center footer_item">
-                  <div class="w-50 d-flex flex-column justify-content-center align-items-center">
-                    <h3>Products</h3>
-                    <p>Lorem</p>
-                    <p>Lorem</p>
-                    <p>Lorem</p>
-                    <p>Lorem</p>
-                  </div>
-                </div>
-                <div class="col-12 col-lg-4 d-flex flex-column justify-content-between align-items-center footer_item">
-                  <div class="w-50 d-flex flex-column justify-content-center align-items-center px-4">
-                    <h3>Contact Us</h3>
-                    <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, natus illum.</p>
-                  </div>
-                </div>
-                <div class="col-12 col-lg-4 d-flex flex-column justify-content-between align-items-lg-start align-items-center footer_item">
-                  <div class="w-50 d-flex flex-column justify-content-center align-items-center">
-                    <h3>Website</h3>
-                    <p>About Us</p>
-                    <p>Privacy Policy</p>
-                    <p>Sitemap</p>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12 d-flex justify-content-center social_icons_area">
-                  <ul>
-                    <li><img src="./Images/Group 102.png" alt=""></li>
-                    <li><img src="./Images/Group 99.png" alt=""></li>
-                    <li><img src="./Images/Vector-1.png" alt=""></li>
-                    <li><img src="./Images/Group 101.png" alt=""></li>
-                    <li><img src="./Images/Vector.png" alt=""></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12 d-flex justify-content-center reserved_rights">&copy; 2022 Academia United</div>
-              </div>
-            </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const loadEl = document.querySelector('#load');
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.firestore().doc('/foo/bar').get().then(() => { });
+        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        // firebase.analytics(); // call to activate
+        // firebase.analytics().logEvent('tutorial_completed');
+        // firebase.performance(); // call to activate
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
-        </footer>
-    <!--Font Awesome-->
-    <script src="https://kit.fontawesome.com/1d56c7ec24.js" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
-</body>
+        try {
+          let app = firebase.app();
+          let features = [
+            'auth', 
+            'database', 
+            'firestore',
+            'functions',
+            'messaging', 
+            'storage', 
+            'analytics', 
+            'remoteConfig',
+            'performance',
+          ].filter(feature => typeof app[feature] === 'function');
+          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>
+  </body>
 </html>
