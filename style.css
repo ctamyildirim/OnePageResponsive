@@ -29,6 +29,7 @@ body{
     height: auto;
     filter: invert(100%);
     margin-left: 90px;
+    cursor : pointer;
 }
 
 #website_inclusive header.website_header .nav_inclusive{
@@ -48,6 +49,7 @@ body{
     color: white;
     list-style: none;
     padding: 0 16px;
+    cursor : pointer;
     
 }
 #website_inclusive header.website_header .nav_inclusive ul li a:link, ul li a:active, ul li a:hover, ul li a:visited{
